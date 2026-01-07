@@ -1,0 +1,32 @@
+version: 2
+
+sources:
+  - name: raw
+    description: Raw data ingested from OSRS Wiki API
+    tables:
+      - name: raw_wiki_changes
+        description: Raw change events from the Recent Changes API
+        columns:
+          - name: change_id
+            description: Unique identifier (pageid_revid)
+            tests:
+              - unique
+              - not_null
+          - name: revid
+            description: Wiki revision ID
+            tests:
+              - not_null
+          - name: timestamp
+            description: When the change occurred
+            tests:
+              - not_null
+          - name: title
+            description: Page title
+            tests:
+              - not_null
+
+      - name: scrape_state
+        description: State tracking for incremental loading
+
+      - name: ingestion_metrics
+        description: Run metrics for monitoring

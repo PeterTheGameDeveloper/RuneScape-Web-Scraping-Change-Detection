@@ -1,0 +1,24 @@
+# Core
+requests>=2.31.0
+pydantic>=2.5.0
+python-dotenv>=1.0.0
+
+# Storage
+duckdb>=0.9.0
+minio>=7.2.0
+
+# dbt
+dbt-core>=1.7.0
+dbt-duckdb>=1.7.0
+
+# Orchestration
+dagster>=1.5.0
+dagster-webserver>=1.5.0
+dagster-duckdb>=0.21.0
+
+# Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Utilities
+rich>=13.7.0
