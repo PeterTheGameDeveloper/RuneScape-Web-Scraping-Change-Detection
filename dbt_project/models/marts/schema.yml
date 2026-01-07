@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: fct_page_changes
+    description: Fact table containing all wiki page changes with enriched metrics
+    columns:
+      - name: change_id
+        description: Unique change identifier
+        tests:
+          - unique
+          - not_null
+      - name: pageid
+        description: Wiki page ID
+        tests:
+          - not_null
+      - name: change_timestamp
+        description: When the change occurred
+        tests:
+          - not_null
+      - name: edit_size_category
+        description: Categorization of edit size (tiny, small, medium, large)
+        tests:
+          - accepted_values:
+              values: ['tiny', 'small', 'medium', 'large']
+
+  - name: dim_pages
+    description: Dimension table with page-level aggregated metrics
+    columns:
+      - name: pageid
+        description: Wiki page ID (unique per page)
+        tests:
+          - unique
+          - not_null
+      - name: title
+        description: Page title
+        tests:
+          - not_null
+      - name: total_edits
+        description: Total number of edits to this page
+        tests:
+          - not_null
+      - name: activity_level
+        description: Activity categorization
+        tests:
+          - accepted_values:
+              values: ['single_edit', 'low_activity', 'moderate_activity', 'high_activity']
